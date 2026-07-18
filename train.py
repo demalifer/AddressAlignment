@@ -85,8 +85,8 @@ class Trainer:
     def compute_metrics(self, metrics, records):
         raise NotImplementedError
 
-class AddressTaggingTogether(Trainer):
-    def __init__(self, inputs):
+class AddressTaggingTrainer(Trainer):
+    def forward(self, inputs):
         outputs = self.model(input_ids=inputs['input_ids'], attention_mask=inputs['attention_mask'], labels=inputs['labels'])
         return outputs, outputs['loss']
 
